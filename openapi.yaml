@@ -1,0 +1,18 @@
+openapi: 3.0.0
+info:
+  title: OpenAPI Template
+  description: Template of split OpenAPI with validator
+  version: 1.0.0
+servers:
+  - url: "{server}"
+    description: URL of the server
+    variables:
+      server:
+        default: http://localhost:3000
+tags:
+  - name: task
+paths:
+  /tasks:
+    $ref: ./paths/tasks.yaml
+  /task/{id}:
+    $ref: ./paths/task.yaml

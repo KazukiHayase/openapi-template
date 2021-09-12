@@ -1,0 +1,6 @@
+type: object
+properties:
+  tasks:
+    type: array
+    items:
+      $ref: Task.yaml

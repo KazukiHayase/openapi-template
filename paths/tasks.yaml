@@ -1,0 +1,71 @@
+get:
+  tags:
+    - task
+  summary: Get all tasks
+  description: Get all tasks
+  operationId: getTasks
+  responses:
+    200:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/GetTasksResponse.yaml
+          example:
+            tasks:
+              - id: 1
+                name: prepare documents
+                is_completed: false
+                deadline: 2021/09/01
+              - id: 2
+                name: lunch
+                is_completed: true
+                deadline: 2021/09/02
+
+post:
+  tags:
+    - task
+  summary: Create a task
+  description: Create a Task
+  operationId: postTask
+  requestBody:
+    required: true
+    description: Task to create
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Name of the task to be created
+              example: prepare documents
+            is_completed:
+              type: boolean
+              description: Whether the task to be created is completed
+              example: false
+            deadline:
+              type: string
+              description: Deadline of the task to be created
+              example: 2021/09/01
+  responses:
+    200:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/Task.yaml
+          example:
+            id: 1
+            name: prepare documents
+            is_completed: false
+            deadline: 2021/09/01
+    400:
+      description: Fail to create a task
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/Error.yaml
+          example:
+            error: invalid_parameter
+            error_description: name parameter is invalid

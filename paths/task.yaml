@@ -1,0 +1,25 @@
+get:
+  tags:
+    - task
+  summary: Find task by id
+  description: Return a single Task
+  operationId: getTaskById
+  parameters:
+    - name: id
+      in: path
+      description: task id
+      required: true
+      schema:
+        type: integer
+  responses:
+    200:
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/Task.yaml
+          example:
+            id: 1
+            name: prepare documents
+            is_completed: false
+            deadline: 2021/09/01
